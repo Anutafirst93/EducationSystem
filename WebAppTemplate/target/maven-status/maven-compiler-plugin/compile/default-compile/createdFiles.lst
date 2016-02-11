@@ -1,0 +1,5 @@
+com\so\webapptemplate\lesson\LessonListServlet.class
+com\so\webapptemplate\groups\GroupsServlet.class
+com\so\webapptemplate\users\DeleteUserServlet.class
+com\so\webapptemplate\users\AddUsersServlet.class
+com\so\webapptemplate\users\UsersServlet.class
