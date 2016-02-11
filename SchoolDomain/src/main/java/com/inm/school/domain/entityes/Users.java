@@ -38,13 +38,16 @@ public class Users implements Serializable {
     @Basic(optional = false)
     @Column(name = "pass")
     private String pass;
+    @Basic(optional = false)
     @Column(name = "firstname")
     private String firstname;
+    @Basic(optional = false)
     @Column(name = "lastname")
     private String lastname;
     @Basic(optional = false)
     @Column(name = "role")
     private String role;
+    @Basic(optional = false)
     @Column(name = "email")
     private String email;
 
@@ -55,11 +58,14 @@ public class Users implements Serializable {
         this.id = id;
     }
 
-    public Users(Integer id, String login, String pass, String role) {
+    public Users(Integer id, String login, String pass, String firstname, String lastname, String role, String email) {
         this.id = id;
         this.login = login;
         this.pass = pass;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.role = role;
+        this.email = email;
     }
 
     public Integer getId() {
