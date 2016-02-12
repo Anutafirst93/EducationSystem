@@ -45,8 +45,8 @@ public class Users implements Serializable {
     @Column(name = "lastname")
     private String lastname;
     @Basic(optional = false)
-    @Column(name = "role")
-    private String role;
+    @Column(name = "roles")
+    private String roles;
     @Basic(optional = false)
     @Column(name = "email")
     private String email;
@@ -58,13 +58,13 @@ public class Users implements Serializable {
         this.id = id;
     }
 
-    public Users(Integer id, String login, String pass, String firstname, String lastname, String role, String email) {
+    public Users(Integer id, String login, String pass, String firstname, String lastname, String roles, String email) {
         this.id = id;
         this.login = login;
         this.pass = pass;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.role = role;
+        this.roles = roles;
         this.email = email;
     }
 
@@ -108,12 +108,12 @@ public class Users implements Serializable {
         this.lastname = lastname;
     }
 
-    public String getRole() {
-        return role;
+    public String getRoles() {
+        return roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 
     public String getEmail() {
