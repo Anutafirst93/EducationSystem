@@ -23,15 +23,15 @@ public class AddUsersServlet extends HttpServlet {
         String pass = request.getParameter("pass");
         String firstname = request.getParameter("firstname");
         String lastname = request.getParameter("lastname");
-        String role = request.getParameter("role");
+        String roles = request.getParameter("roles");
         String email = request.getParameter("email");
         Users user = new Users();
-        user.setLastname(login);
-        user.setLastname(pass);
+        user.setLogin(login);
+        user.setPass(pass);
         user.setFirstname(firstname);
         user.setLastname(lastname);
-        user.setLastname(role);
-        user.setLastname(email);
+        user.setRoles(roles);
+        user.setEmail(email);
         
         int id = new UserServiceImpl().addUser(user);
         
