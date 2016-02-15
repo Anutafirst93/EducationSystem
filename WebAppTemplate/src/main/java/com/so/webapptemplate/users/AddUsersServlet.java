@@ -33,6 +33,7 @@ public class AddUsersServlet extends HttpServlet {
         user.setRoles(roles);
         user.setEmail(email);
         
+        //.......
         int id = new UserServiceImpl().addUser(user);
         
         if(id > 0){
