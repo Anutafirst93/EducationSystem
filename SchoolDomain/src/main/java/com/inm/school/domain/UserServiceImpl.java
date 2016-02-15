@@ -59,6 +59,10 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Users getUser(int id) {
+        
+        
+        
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
