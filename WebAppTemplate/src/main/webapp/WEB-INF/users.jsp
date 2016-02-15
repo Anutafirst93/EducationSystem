@@ -8,26 +8,37 @@
         <script src="js/jquery-2.2.0.js"></script>
         <style type="text/css">
             table, tr, td{
-                border:1px solid black;
-                border-collapse: collapse;
+                border:1px solid gold;
+                margin: auto;
+                border-collapse: separate;
+                border-spacing: 10px 20px;
+                 
             }
-        </style>
-        
-        
-<!--        <script type="text/javascript">
+            td {
+                text-align: center; 
+            }
+           table, tr, td{
+                border:2px solid gold;
+                border-collapse: collapse;
+                border-spacing: 10px ;
+            }
+           
+           </style>
+           
+        <script type="text/javascript">
            
                 function checkFields () {
                     var login = $("#login").val();
                     var pass = $("#pass").val();
                     var firstname = $("#firstname").val();
                     var lastname = $("#lastname").val();
-                    var role = $("#role").val();
+                    var roles = $("#roles").val();
                     var email = $("#email").val();
                     login.trim();
                     pass.trim();
                     firstname.trim();
                     lastname.trim();
-                    role.trim();
+                    roles.trim();
                     email.trim();
                     if(login === undefined || login.length === 0){
                         alert ("login shouldn`t be empty");
@@ -47,10 +58,10 @@
                         alert ("lastname shouldn`t be empty");
                         return false;
                     }
-                    if(role === undefined || role.length === 0){
-                        alert ("role shouldn`t be empty");
-                        return false;
-                    }
+//                    if(roles === undefined || roles.length === 0){
+//                        alert ("roles shouldn`t be empty");
+//                        return false;
+//                    }
                     
                     if(email === undefined || email.length === 0){
                         alert ("email shouldn`t be empty");
@@ -72,10 +83,10 @@
                         alert ("lastname shouldn`t be more then 32 chars");
                         return false;
                     }
-                    if (role.length > 32){
-                        alert ("role shouldn`t be more then 32 chars");
-                        return false;
-                    }
+//                    if (roles.length > 32){
+//                        alert ("roles shouldn`t be more then 32 chars");
+//                        return false;
+//                    }
                      if (email.length > 32){
                         alert ("email shouldn`t be more then 32 chars");
                         return false;
@@ -96,25 +107,78 @@
                     ); 
                 return false; 
                         }
-           
-            </script>-->
+//             onclick="return checkFields()"
+            </script>
     </head>
     <body>
         <form method="post" action="adduser">
-            <input type="text" name="login" id="login"/>
-            <input type="text" name="pass" id="pass"/>
-            <input type="text" name="firstname" id="firstname"/>
-            <input type="text" name="lastname" id="lastname"/>
-            <!--<input type="text" name="role" id="role"/>-->
-            <select name ="role">
+            <text>Регистрация пользователя:  </text>
+            <table>
+                <tr>
+                    <th>
+                        Login: 
+                    </th>
+                    <td>
+                        <input type="text" name="login" id="login"/>
+                    </td>                  
+                </tr>
+                <tr>
+                    <th>
+                        Password:
+                    </th>
+                    <td>
+                        <input type="text" name="pass" id="pass"/>
+                    </td> 
+                </tr>
+                <tr>
+                    <th>
+                        Firstname:
+                    </th>
+                    <td>
+                        <input type="text" name="firstname" id="firstname"/>
+                    </td> 
+                </tr>
+                <tr>
+                    <th>
+                        Lastname:
+                    </th>
+                    <td>
+                        <input type="text" name="lastname" id="lastname"/>
+                    </td> 
+                </tr>
+                <tr>
+                    <th>
+                        Your role:
+                    </th>
+                    <td>
+                        <select name ="roles">
                 <option selected="" value="">Выберите значение</option>
                 <option value="stud">Student</option>
                 <option value="menthor">Menthor</option>
                 <option value="admin">Admin</option>
-                <input type="email" value="" name="email" id="email"/>
-            <input type="submit" name="adduser" value="add user" />
-            <!--onclick="return checkFields()"-->
+                    </td> 
+                </tr>
+                <tr>
+                    <th>
+                        Email:
+                    </th>
+                    <td>
+                       <input type="email" value="" name="email" id="email"/>
+                    </td> 
+                </tr>
+                <tr>
+                    <th>
+                        <p> <input type="submit" name="adduser" value="add user" /> </p>
+                    </th>               
+                </tr>
+            
+            <tr>
+                    
+                </tr>
+            </table>
+            <input type="button" value="Кнопка" onClick='location.href="http://localhost:8084/WebAppTemplate/"'>
         </form>
+            
         <table>
             <tr>
                 <td>id</td>
@@ -122,7 +186,7 @@
                 <td>pass</td>
                 <td>firstname</td>
                 <td>lastname</td>
-                <td>role</td>
+                <td>roles</td>
                 <td>email</td>
                 <td>editlink</td>
                 <td>deletelink</td>
@@ -135,7 +199,7 @@
                     <td><c:out value="${item.pass}"/></td>
                     <td><c:out value="${item.firstname}"/></td>
                     <td><c:out value="${item.lastname}"/></td>
-                    <td><c:out value="${item.role}"/></td>
+                    <td><c:out value="${item.roles}"/></td>
                     <td><c:out value="${item.email}"/></td>
                     <td><a href="edituser?id=${item.id}">edit</a></td>
                     <td><a href="deleteuser?id=${item.id}" onclick="return deleteUser(${item.id})">delete</a></td>
