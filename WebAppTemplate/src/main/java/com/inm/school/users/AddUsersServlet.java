@@ -1,4 +1,4 @@
-package com.so.webapptemplate.users;
+package com.inm.school.users;
 
 import com.inm.school.domain.entityes.Users;
 import com.inm.school.HibernateUtil;

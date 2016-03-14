@@ -2,23 +2,27 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>UsersServlet</servlet-name>
-        <servlet-class>com.so.webapptemplate.users.UsersServlet</servlet-class>
+        <servlet-class>com.inm.school.users.UsersServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddUsersServlet</servlet-name>
-        <servlet-class>com.so.webapptemplate.users.AddUsersServlet</servlet-class>
+        <servlet-class>com.inm.school.users.AddUsersServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteUserServlet</servlet-name>
-        <servlet-class>com.so.webapptemplate.users.DeleteUserServlet</servlet-class>
+        <servlet-class>com.inm.school.users.DeleteUserServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LessonListServlet</servlet-name>
-        <servlet-class>com.so.webapptemplate.lesson.LessonListServlet</servlet-class>
+        <servlet-class>com.inm.school.lesson.LessonListServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>GroupsServlet</servlet-name>
-        <servlet-class>com.so.webapptemplate.groups.GroupsServlet</servlet-class>
+        <servlet-class>com.inm.school.groups.GroupsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <servlet-class>com.inm.school.users.UpdateUserServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UsersServlet</servlet-name>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>GroupsServlet</servlet-name>
         <url-pattern>/groups</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <url-pattern>/edituser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

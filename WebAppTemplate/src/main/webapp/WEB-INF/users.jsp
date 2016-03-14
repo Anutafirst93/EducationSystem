@@ -8,21 +8,18 @@
         <script src="js/jquery-2.2.0.js"></script>
         <style type="text/css">
             table, tr, td{
-                border:1px solid gold;
-                margin: auto;
-                border-collapse: separate;
-                border-spacing: 10px 20px;
-                 
+                border:1px solid black;
+                border-collapse: collapse;                 
             }
+            table{
+                margin-bottom: 10px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
             td {
                 text-align: center; 
             }
-           table, tr, td{
-                border:2px solid gold;
-                border-collapse: collapse;
-                border-spacing: 10px ;
-            }
-           
            </style>
            
         <script type="text/javascript">
@@ -111,9 +108,11 @@
             </script>
     </head>
     <body>
-        <form method="post" action="adduser">
+        
             <text>Регистрация пользователя:  </text>
+            <form method="post" action="adduser">
             <table>
+                
                 <tr>
                     <th>
                         Login: 
@@ -152,10 +151,11 @@
                     </th>
                     <td>
                         <select name ="roles">
-                <option selected="" value="">Выберите значение</option>
-                <option value="stud">Student</option>
-                <option value="menthor">Menthor</option>
-                <option value="admin">Admin</option>
+                            <option selected="" value="">Выберите значение</option>
+                            <option value="stud">Student</option>
+                            <option value="menthor">Menthor</option>
+                            <option value="admin">Admin</option>
+                        </select>
                     </td> 
                 </tr>
                 <tr>
@@ -167,16 +167,13 @@
                     </td> 
                 </tr>
                 <tr>
-                    <th>
-                        <p> <input type="submit" name="adduser" value="add user" /> </p>
-                    </th>               
+                    <td colspan="2">
+                        <p> <input type="submit" name="adduser" value="add user" onclick="return checkFields()"/> </p>
+                    </td>               
                 </tr>
             
-            <tr>
-                    
-                </tr>
+                
             </table>
-            <input type="button" value="Кнопка" onClick='location.href="http://localhost:8084/WebAppTemplate/"'>
         </form>
             
         <table>

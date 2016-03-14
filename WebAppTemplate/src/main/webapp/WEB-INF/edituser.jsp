@@ -111,6 +111,7 @@
         
             <text>Регистрация пользователя:  </text>
             <form method="post" action="adduser">
+                <input type="hidden" name="id" value="${currentUser.id}"/>
             <table>
                 
                 <tr>
@@ -118,23 +119,15 @@
                         Login: 
                     </th>
                     <td>
-                        <input type="text" name="login" id="login"/>
+                        <input type="text" value="${currentUser.login}" name="login" id="login"/>
                     </td>                  
-                </tr>
-                <tr>
-                    <th>
-                        Password:
-                    </th>
-                    <td>
-                        <input type="text" name="pass" id="pass"/>
-                    </td> 
                 </tr>
                 <tr>
                     <th>
                         Firstname:
                     </th>
                     <td>
-                        <input type="text" name="firstname" id="firstname"/>
+                        <input type="text" value="${currentUser.firstname}" name="firstname" id="firstname"/>
                     </td> 
                 </tr>
                 <tr>
@@ -142,7 +135,7 @@
                         Lastname:
                     </th>
                     <td>
-                        <input type="text" name="lastname" id="lastname"/>
+                        <input type="text" value="${currentUser.lastname}" name="lastname" id="lastname"/>
                     </td> 
                 </tr>
                 <tr>
@@ -151,10 +144,16 @@
                     </th>
                     <td>
                         <select name ="roles">
-                            <option selected="" value="">Выберите значение</option>
-                            <option value="stud">Student</option>
-                            <option value="menthor">Menthor</option>
-                            <option value="admin">Admin</option>
+                            <c:forEach var="item" items="${acceptedRoles}">
+                                <c:choose>
+                                    <c:when test="${currentUser.roles == item}">
+                                        <option value="${item}" selected="selected">${item}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option value="${item}">${item}</option>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
                         </select>
                     </td> 
                 </tr>
@@ -163,45 +162,17 @@
                         Email:
                     </th>
                     <td>
-                       <input type="email" value="" name="email" id="email"/>
+                       <input type="email" value="${currentUser.email}" name="email" id="email"/>
                     </td> 
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <p> <input type="submit" name="adduser" value="add user" onclick="return checkFields()"/> </p>
+                        <p> <input type="submit" name="adduser" value="add user" /> </p>
                     </td>               
                 </tr>
             
                 
             </table>
         </form>
-            
-        <table>
-            <tr>
-                <td>id</td>
-                <td>login</td>
-                <td>pass</td>
-                <td>firstname</td>
-                <td>lastname</td>
-                <td>roles</td>
-                <td>email</td>
-                <td>editlink</td>
-                <td>deletelink</td>
-            </tr>
-            
-            <c:forEach var="item" items="${userlist}">
-                <tr id="item${item.id}">
-                    <td><c:out value="${item.id}"/></td>
-                    <td><c:out value="${item.login}"/></td>
-                    <td><c:out value="${item.pass}"/></td>
-                    <td><c:out value="${item.firstname}"/></td>
-                    <td><c:out value="${item.lastname}"/></td>
-                    <td><c:out value="${item.roles}"/></td>
-                    <td><c:out value="${item.email}"/></td>
-                    <td><a href="edituser?id=${item.id}">edit</a></td>
-                    <td><a href="deleteuser?id=${item.id}" onclick="return deleteUser(${item.id})">delete</a></td>
-                </tr>
-            </c:forEach>
-        </table>
     </body>
 </html>

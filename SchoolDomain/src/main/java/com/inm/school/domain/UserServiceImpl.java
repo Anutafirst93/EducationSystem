@@ -54,16 +54,33 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public boolean updateUser(Users u) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = HibernateUtil.getSessionFactory().openSession();        
+        String query = "update users set login=:login, pass=:pass,"
+                + " firstname=:firstname, lastname=:lastname, "
+                + "roles=:roles, email=:email where id=:id";
+        int rows = 0;
+        session.beginTransaction();
+        try{
+            rows= session.createSQLQuery(query).setParameter("login", u)
+                    .setParameter("pass", u)
+                    .setParameter("firstname", u)
+                    .setParameter("lastname", u)
+                    .setParameter("roles", u)
+                    .setParameter("email", u)
+                    .setParameter("id", u).executeUpdate();
+            session.getTransaction().commit();
+        }catch(Exception ex){
+            ex.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        return (rows > 0);
     }
 
     @Override
     public Users getUser(int id) {
-        
-        
-        
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Users u = (Users)session.get(Users.class, id);
+        return u;
     }
 
     @Override

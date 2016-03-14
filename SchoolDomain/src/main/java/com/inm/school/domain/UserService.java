@@ -14,6 +14,7 @@ import java.util.List;
  */
 public interface UserService {
     public int          addUser(Users u);
+//    public void      updateUser(Users u);
     public boolean      updateUser(Users u);
     public Users        getUser(int id); //выборка пол-ля по id 
     public boolean      deleteUser(int id);

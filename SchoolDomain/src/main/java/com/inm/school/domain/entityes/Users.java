@@ -6,6 +6,7 @@
 package com.inm.school.domain.entityes;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,12 +26,13 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u")})
 public class Users implements Serializable {
-
+   
     private static final long serialVersionUID = 1L;
+    public static final String[] acceptedRoles = {"stud", "mentor", "admin"};
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "Id")
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
     @Column(name = "login")
@@ -112,9 +114,17 @@ public class Users implements Serializable {
         return roles;
     }
 
-    public void setRoles(String roles) {
-        this.roles = roles;
-    }
+    public void setRoles(String roles) { 
+        if(roles != null){ 
+        if(roles.length()!= 0 && (Arrays.asList(acceptedRoles).contains(roles))){ 
+            this.roles = roles; 
+        }else{ 
+            this.roles = "stud"; 
+            } 
+        }else{ 
+            this.roles = "stud"; 
+            } 
+        }
 
     public String getEmail() {
         return email;
