@@ -5,7 +5,10 @@
  */
 package com.inm.school.domain;
 
+import com.inm.school.domain.entityes.Group;
+import com.inm.school.domain.entityes.Users;
 import java.util.List;
+import org.hibernate.Session;
 
 
 /**
@@ -36,7 +39,14 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public List getGroupsList() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String req = "select g.id as id, g.namegroup as namegroup, u.firstname as firstname, u.lastname as lastname " +
+"from users u, groups g " +
+"where g.menthorid = u.id";
+        Session session = com.inm.school.HibernateUtil.getSessionFactory().openSession();
+        List<Group> grouplist;
+        // select * from users
+        grouplist = session.createSQLQuery(req).addEntity(Group.class).list();
+        return grouplist;
     }
 
     @Override

@@ -9,6 +9,8 @@
     <property name="hibernate.connection.password">avon1993</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping class="com.inm.school.domain.entityes.Users"/>
+    <mapping class="com.inm.school.domain.entityes.Group"/>
+    <mapping class="com.inm.school.domain.entityes.Groups"/>
     
   </session-factory>
 </hibernate-configuration>
