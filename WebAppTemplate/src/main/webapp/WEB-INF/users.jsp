@@ -16,7 +16,6 @@
                 margin-left: auto;
                 margin-right: auto;
             }
-            
             td {
                 text-align: center; 
             }

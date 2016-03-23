@@ -1,6 +1,7 @@
-D:\EducationSystem\WebAppTemplate\src\main\java\com\so\webapptemplate\groups\GroupsServlet.java
-D:\EducationSystem\WebAppTemplate\src\main\java\com\so\webapptemplate\lesson\LessonListServlet.java
-D:\EducationSystem\WebAppTemplate\src\main\java\com\so\webapptemplate\users\AddUsersServlet.java
-D:\EducationSystem\WebAppTemplate\src\main\java\com\so\webapptemplate\users\DeleteUserServlet.java
-D:\EducationSystem\WebAppTemplate\src\main\java\com\so\webapptemplate\users\UpdateUserServlet.java
-D:\EducationSystem\WebAppTemplate\src\main\java\com\so\webapptemplate\users\UsersServlet.java
+D:\EducationSystem\WebAppTemplate\src\main\java\com\inm\school\groups\GroupsServlet.java
+D:\EducationSystem\WebAppTemplate\src\main\java\com\inm\mentor\MentorListServlet.java
+D:\EducationSystem\WebAppTemplate\src\main\java\com\inm\school\users\UpdateUserServlet.java
+D:\EducationSystem\WebAppTemplate\src\main\java\com\inm\school\lesson\LessonListServlet.java
+D:\EducationSystem\WebAppTemplate\src\main\java\com\inm\school\users\UsersServlet.java
+D:\EducationSystem\WebAppTemplate\src\main\java\com\inm\school\users\AddUsersServlet.java
+D:\EducationSystem\WebAppTemplate\src\main\java\com\inm\school\users\DeleteUserServlet.java

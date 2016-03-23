@@ -24,7 +24,7 @@ public class UpdateUserServlet extends HttpServlet {
             throws ServletException, IOException {
         Users u = new UserServiceImpl().getUser(Integer.parseInt(request.getParameter("id")));
         request.setAttribute("currentUser", u);
-        request.setAttribute("acceptedRoles", Users.acceptedRoles);
+        request.setAttribute("acceptedRoles", Users.Roles.values());
         request.getRequestDispatcher("WEB-INF/edituser.jsp").forward(request, response);
     }
 
@@ -34,13 +34,13 @@ public class UpdateUserServlet extends HttpServlet {
         String login = request.getParameter("login");
         String firstname = request.getParameter("firstname");
         String lastname = request.getParameter("lastname");
-        String roles = request.getParameter("roles");
         String email = request.getParameter("email");
         Users user = new UserServiceImpl().getUser(Integer.parseInt(request.getParameter("id")));
         user.setLogin(login);
         user.setFirstname(firstname);
         user.setLastname(lastname);
-        user.setRoles(roles);
+        user.setRoles(Users.Roles.valueOf(request.getParameter("roles")));
+        System.out.println(user.getRoles());
         user.setEmail(email);
         
         new UserServiceImpl().updateUser(user);

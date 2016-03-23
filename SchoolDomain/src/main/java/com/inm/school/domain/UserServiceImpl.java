@@ -9,9 +9,9 @@ import com.inm.school.HibernateUtil;
 import com.inm.school.domain.entityes.Users;
 import java.util.ArrayList;
 import java.util.List;
-import org.hibernate.Hibernate;
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.service.Service;
+
 
 /**
  *
@@ -39,7 +39,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public int addUser(Users u) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         int id = -1;
         try{
@@ -53,21 +52,22 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public boolean updateUser(Users u) {
-        Session session = HibernateUtil.getSessionFactory().openSession();        
-        String query = "update users set login=:login, pass=:pass,"
+    public boolean updateUser(Users u) {        
+        String query = "update users set login=:login, "
                 + " firstname=:firstname, lastname=:lastname, "
                 + "roles=:roles, email=:email where id=:id";
         int rows = 0;
         session.beginTransaction();
         try{
-            rows= session.createSQLQuery(query).setParameter("login", u)
-                    .setParameter("pass", u)
-                    .setParameter("firstname", u)
-                    .setParameter("lastname", u)
-                    .setParameter("roles", u)
-                    .setParameter("email", u)
-                    .setParameter("id", u).executeUpdate();
+            Query q = session.createSQLQuery(query).setParameter("login", u.getLogin())
+                    .setParameter("firstname", u.getFirstname())
+                    .setParameter("lastname", u.getLastname())
+                    .setParameter("roles", u.getRoles())
+                    .setParameter("email", u.getEmail())
+                    .setParameter("id", u.getId());
+            System.out.println("update request");
+            System.out.println(q.toString());
+            rows= q.executeUpdate();
             session.getTransaction().commit();
         }catch(Exception ex){
             ex.printStackTrace();
@@ -78,7 +78,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Users getUser(int id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
         Users u = (Users)session.get(Users.class, id);
         return u;
     }
@@ -86,7 +85,6 @@ public class UserServiceImpl implements UserService{
     @Override
     public boolean deleteUser(int id) {
         boolean resalt = true;
-        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         try{
             session.createSQLQuery("delete from users where id = :id").addEntity(Users.class).setParameter("id", id).executeUpdate();
@@ -100,11 +98,32 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<Users> userList() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
         List<Users> userlist;
         // select * from users
         userlist = session.createSQLQuery("select * from users").addEntity(Users.class).list();
         return userlist;
     }
-    } 
+
+    @Override
+    public List<Users> getMentors(int start, int offset) {
+        String query = "select * from users where roles = :role order by id asc limit :start, :offset";
+        return session.createSQLQuery(query)
+                .addEntity(Users.class)
+                .setParameter("start", start)
+                .setParameter("offset", offset)
+                .setParameter("role", Users.Roles.MENTOR.name())
+                .list();
+    }
+
+    @Override
+    public int getUsersCount(String role) {
+        String query = "select * from users where roles = :role";
+        return session.createSQLQuery(query)
+                .addEntity(Users.class)
+                .setParameter("role", role)
+                .list().size();
+    }
+    
+    
+} 
 

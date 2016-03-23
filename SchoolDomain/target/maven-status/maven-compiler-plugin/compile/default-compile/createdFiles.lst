@@ -1,7 +1,9 @@
 com\inm\school\domain\UserServiceImpl.class
 com\inm\school\domain\StudingroupService.class
 com\inm\school\domain\entityes\Groups.class
+com\inm\school\domain\entityes\Users$Roles.class
 com\inm\school\HibernateUtil.class
+com\inm\school\domain\entityes\Group.class
 com\inm\school\domain\entityes\Lesson.class
 com\inm\school\domain\GroupService.class
 com\inm\school\domain\entityes\Studingroup.class

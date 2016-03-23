@@ -19,4 +19,6 @@ public interface UserService {
     public Users        getUser(int id); //выборка пол-ля по id 
     public boolean      deleteUser(int id);
     public List<Users>  userList();
+    public List<Users> getMentors(int start, int offset);
+    public int getUsersCount(String role);
 }

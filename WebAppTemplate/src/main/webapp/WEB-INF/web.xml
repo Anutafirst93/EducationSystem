@@ -24,6 +24,10 @@
         <servlet-name>UpdateUserServlet</servlet-name>
         <servlet-class>com.inm.school.users.UpdateUserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MentorListServlet</servlet-name>
+        <servlet-class>com.inm.mentor.MentorListServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsersServlet</servlet-name>
         <url-pattern>/users</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>UpdateUserServlet</servlet-name>
         <url-pattern>/edituser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MentorListServlet</servlet-name>
+        <url-pattern>/mentors</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

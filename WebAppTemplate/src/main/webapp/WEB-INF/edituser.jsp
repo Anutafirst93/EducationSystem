@@ -16,7 +16,6 @@
                 margin-left: auto;
                 margin-right: auto;
             }
-            
             td {
                 text-align: center; 
             }
@@ -41,7 +40,6 @@
                         alert ("login shouldn`t be empty");
                         return false;
                     }
-                    
                     if(pass === undefined || pass.length === 0){
                         alert ("pass shouldn`t be empty");
                         return false;
@@ -50,16 +48,10 @@
                         alert ("firstname shouldn`t be empty");
                         return false;
                     }
-                    
                     if(lastname === undefined || lastname.length === 0){
                         alert ("lastname shouldn`t be empty");
                         return false;
                     }
-//                    if(roles === undefined || roles.length === 0){
-//                        alert ("roles shouldn`t be empty");
-//                        return false;
-//                    }
-                    
                     if(email === undefined || email.length === 0){
                         alert ("email shouldn`t be empty");
                         return false;
@@ -80,37 +72,17 @@
                         alert ("lastname shouldn`t be more then 32 chars");
                         return false;
                     }
-//                    if (roles.length > 32){
-//                        alert ("roles shouldn`t be more then 32 chars");
-//                        return false;
-//                    }
                      if (email.length > 32){
                         alert ("email shouldn`t be more then 32 chars");
                         return false;
                     }
                     return true;
                 }
-                
-                
-                function deleteUser(id){ 
-                        var url = "deleteuser"; 
-                                        $.get( 
-                            url, 
-                            {id:id}, 
-                function(data){ 
-                        $("#item"+id).remove(); 
-                return false; 
-                        }
-                    ); 
-                return false; 
-                        }
-//             onclick="return checkFields()"
             </script>
     </head>
     <body>
-        
-            <text>Регистрация пользователя:  </text>
-            <form method="post" action="adduser">
+            <text>Изменение информации о пользователе:  </text>
+            <form method="post" action="edituser">
                 <input type="hidden" name="id" value="${currentUser.id}"/>
             <table>
                 
@@ -167,11 +139,9 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <p> <input type="submit" name="adduser" value="add user" /> </p>
+                        <p> <input type="submit" name="edituser" value="edit user" /> </p>
                     </td>               
                 </tr>
-            
-                
             </table>
         </form>
     </body>

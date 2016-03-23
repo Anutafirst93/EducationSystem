@@ -23,14 +23,14 @@ public class AddUsersServlet extends HttpServlet {
         String pass = request.getParameter("pass");
         String firstname = request.getParameter("firstname");
         String lastname = request.getParameter("lastname");
-        String roles = request.getParameter("roles");
+//        String roles = request.getParameter("roles");
         String email = request.getParameter("email");
         Users user = new Users();
         user.setLogin(login);
         user.setPass(pass);
         user.setFirstname(firstname);
         user.setLastname(lastname);
-        user.setRoles(roles);
+        user.setRoles(Users.Roles.valueOf(request.getParameter("roles")));
         user.setEmail(email);
         
         //.......

@@ -1,6 +1,7 @@
-com\so\webapptemplate\lesson\LessonListServlet.class
-com\so\webapptemplate\groups\GroupsServlet.class
-com\so\webapptemplate\users\DeleteUserServlet.class
-com\so\webapptemplate\users\AddUsersServlet.class
-com\so\webapptemplate\users\UpdateUserServlet.class
-com\so\webapptemplate\users\UsersServlet.class
+com\inm\school\users\DeleteUserServlet.class
+com\inm\school\lesson\LessonListServlet.class
+com\inm\school\users\AddUsersServlet.class
+com\inm\school\users\UpdateUserServlet.class
+com\inm\school\users\UsersServlet.class
+com\inm\mentor\MentorListServlet.class
+com\inm\school\groups\GroupsServlet.class

@@ -27,6 +27,7 @@ public class DeleteUserServlet extends HttpServlet {
         if (!resalt){
         throw new ServletException();
         }
+        response.sendRedirect("mentors");
     }
 
 }

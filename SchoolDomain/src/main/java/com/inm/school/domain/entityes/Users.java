@@ -10,6 +10,8 @@ import java.util.Arrays;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +30,7 @@ import javax.persistence.Table;
 public class Users implements Serializable {
    
     private static final long serialVersionUID = 1L;
-    public static final String[] acceptedRoles = {"stud", "mentor", "admin"};
+//    public static final String[] acceptedRoles = {"stud", "mentor", "admin"};
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -47,8 +49,9 @@ public class Users implements Serializable {
     @Column(name = "lastname")
     private String lastname;
     @Basic(optional = false)
+    @Enumerated(EnumType.STRING)
     @Column(name = "roles")
-    private String roles;
+    private Roles roles;
     @Basic(optional = false)
     @Column(name = "email")
     private String email;
@@ -60,7 +63,7 @@ public class Users implements Serializable {
         this.id = id;
     }
 
-    public Users(Integer id, String login, String pass, String firstname, String lastname, String roles, String email) {
+    public Users(Integer id, String login, String pass, String firstname, String lastname, Roles roles, String email) {
         this.id = id;
         this.login = login;
         this.pass = pass;
@@ -68,6 +71,9 @@ public class Users implements Serializable {
         this.lastname = lastname;
         this.roles = roles;
         this.email = email;
+    }
+    public enum Roles{
+        MENTOR, STUDENT, ADMIN
     }
 
     public Integer getId() {
@@ -110,21 +116,22 @@ public class Users implements Serializable {
         this.lastname = lastname;
     }
 
-    public String getRoles() {
+    public Roles getRoles() {
         return roles;
     }
 
-    public void setRoles(String roles) { 
-        if(roles != null){ 
-        if(roles.length()!= 0 && (Arrays.asList(acceptedRoles).contains(roles))){ 
-            this.roles = roles; 
-        }else{ 
-            this.roles = "stud"; 
-            } 
-        }else{ 
-            this.roles = "stud"; 
-            } 
-        }
+    public void setRoles(Roles roles) { 
+//        if(roles != null){ 
+//        if(roles.length()!= 0 && (Arrays.asList(acceptedRoles).contains(roles))){ 
+//            this.roles = roles; 
+//        }else{ 
+//            this.roles = "stud"; 
+//            } 
+//        }else{ 
+//            this.roles = "stud"; 
+//            } 
+        this.roles = roles;
+    }
 
     public String getEmail() {
         return email;
